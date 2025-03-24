@@ -11,5 +11,3 @@ MongoDB: #47A248
 Prisma: #0C344B
 Laravel: #FF2D20
 Bootstrap: #7952B3
-
-GOOGLE_APP_="nxlg jkgv pgbb vrwf"
