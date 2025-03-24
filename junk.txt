@@ -1,0 +1,15 @@
+HTML: #E34F26
+CSS: #1572B6
+JavaScript: #F7DF1E
+React: #61DAFB
+MySQL: #4479A1
+Node.js: #339933
+Next.js: Black/White (dark mode support)
+Tailwind: #06B6D4
+Git: #F05032
+MongoDB: #47A248
+Prisma: #0C344B
+Laravel: #FF2D20
+Bootstrap: #7952B3
+
+GOOGLE_APP_="nxlg jkgv pgbb vrwf"
