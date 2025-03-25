@@ -179,7 +179,7 @@ export default function Home() {
                     <p className="text-muted-foreground mt-2 flex-1">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-2">
                       {project.techStacks.map((tech) => (
                         <Badge key={tech} variant="secondary">
                           {tech}

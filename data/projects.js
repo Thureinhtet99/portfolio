@@ -6,7 +6,7 @@ export const projects = [
     image: Wda,
     title: "Win Dental Academy",
     description:
-      "A modern landing page for Win Dental Academy, featuring an intuitive interface that showcases dental courses, and organizations. Built with Next.js, Tailwind CSS and Shadcn for optimal performance and responsive design across all devices.",
+      "A landing page for Win Dental Academy, featuring modern interface that showcases dental courses, and organizations. Built with Next.js and Shadcn for optimal performance and responsive design across all devices.",
     category: "Web Development", // Category
     techStacks: ["React", "Next.js", "Tailwind"],
     isGitHub: false,
