@@ -13,7 +13,7 @@ import {
   FaCss3,
   FaBootstrap,
   FaGitAlt,
-  FaLaravel,
+  // FaLaravel,
   FaGithub,
 } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
@@ -44,7 +44,7 @@ const technologies = [
     icon: <RiNextjsFill className="text-3xl dark:text-white text-black" />,
   },
   { name: "Nodejs", icon: <FaNodeJs className="text-3xl text-[#339933]" /> },
-  { name: "Laravel", icon: <FaLaravel className="text-3xl text-[#FF2D20]" /> },
+  // { name: "Laravel", icon: <FaLaravel className="text-3xl text-[#FF2D20]" /> },
   { name: "MongoDB", icon: <SiMongodb className="text-3xl text-[#47A248]" /> },
   { name: "PrismaORM", icon: <SiPrisma className="text-3xl text-[#0C344B]" /> },
   { name: "MySQL", icon: <SiMysql className="text-3xl text-[#4479A1]" /> },
