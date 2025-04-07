@@ -1,5 +1,6 @@
 import Wda from "@/public/project-images/wda.png";
 import Academic from "@/public/project-images/academic-center.png";
+import NarutoVerse from "@/public/project-images/narutoverse.png";
 
 export const projects = [
   {
@@ -25,6 +26,18 @@ export const projects = [
     isLiveDemo: false,
     github: "https://github.com/Thureinhtet99/Academic-Center",
     liveDemo: "",
+  },
+  {
+    image: NarutoVerse,
+    title: "Naruto Verse",
+    description:
+      "An immersive fan-based website dedicated to the Naruto universe, featuring character profiles, story arcs, and interactive elements. Designed with modern UI/UX principles brings the ninja world to life for fans with Api.",
+    category: "UI/UX Design", // Category
+    techStacks: ["Next.js", "Tailwind", "Shadcn"],
+    isGitHub: true,
+    isLiveDemo: true,
+    github: "https://github.com/Thureinhtet99/narutoverse",
+    liveDemo: "https://narutoverse-kappa.vercel.app/",
   },
 
   // Add more projects here...
