@@ -12,7 +12,7 @@ import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/projects";
 
 const categories = [
-  "All",
+  // "All",
   "Web Development",
   "Mobile Development",
   "UI/UX Design",
@@ -21,14 +21,13 @@ const categories = [
 export default function ProjectsPage() {
   // useState
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Web Development");
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch = project.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
-    const matchesCategory =
-      activeCategory === "All" || project.category === activeCategory;
+    const matchesCategory = project.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -62,80 +61,91 @@ export default function ProjectsPage() {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-        {filteredProjects.map((project) => (
-          <Card
-            key={project.title}
-            className="group hover:border-primary/50 transition-colors h-[600px] flex flex-col"
-          >
-            <div className="relative h-[280px] grid grid-cols-1 px-2">
-              <div className="relative rounded-md overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover h-auto"
-                />
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project) => (
+            <Card
+              key={project.title}
+              className="group hover:border-primary/50 transition-colors h-[600px] flex flex-col"
+            >
+              <div className="relative h-[280px] grid grid-cols-1 px-2">
+                <div className="relative rounded-md overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    className="object-cover h-auto"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="px-4 flex flex-col flex-1">
-              <h3 className="font-semibold text-lg">{project.title}</h3>
-              <p className="text-muted-foreground mt-2 flex-1">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {project.techStacks.map((tech) => (
-                  <Badge key={tech} variant="secondary">
-                    {tech}
-                  </Badge>
-                ))}
+              <div className="px-4 flex flex-col flex-1">
+                <h3 className="font-semibold text-lg">{project.title}</h3>
+                <p className="text-muted-foreground mt-2 flex-1">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {project.techStacks.map((tech) => (
+                    <Badge key={tech} variant="secondary">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex gap-2 mt-4">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={!project.isGitHub}
+                    asChild={project.isGitHub}
+                  >
+                    {project.isGitHub ? (
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <FaGithub className="h-4 w-4" />
+                        Code
+                      </Link>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <FaGithub className="h-4 w-4" />
+                        Code
+                      </span>
+                    )}
+                  </Button>
+                  <Button
+                    size="sm"
+                    disabled={!project.isLiveDemo}
+                    asChild={project.isLiveDemo}
+                  >
+                    {project.isLiveDemo ? (
+                      <Link
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        Visit site <MoveRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        Visit site <MoveRight className="h-4 w-4" />
+                      </span>
+                    )}
+                  </Button>
+                </div>
               </div>
-              <div className="flex gap-2 mt-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  disabled={!project.isGitHub}
-                  asChild={project.isGitHub}
-                >
-                  {project.isGitHub ? (
-                    <Link
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      <FaGithub className="h-4 w-4" />
-                      Code
-                    </Link>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      <FaGithub className="h-4 w-4" />
-                      Code
-                    </span>
-                  )}
-                </Button>
-                <Button
-                  size="sm"
-                  disabled={!project.isLiveDemo}
-                  asChild={project.isLiveDemo}
-                >
-                  {project.isLiveDemo ? (
-                    <Link
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      Visit site <MoveRight className="h-4 w-4" />
-                    </Link>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      Visit site <MoveRight className="h-4 w-4" />
-                    </span>
-                  )}
-                </Button>
-              </div>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          ))
+        ) : (
+          <div className="col-span-2 flex flex-col items-center justify-center py-20">
+            <h3 className="text-2xl font-semibold mb-2">No projects found</h3>
+            <p className="text-muted-foreground text-center">
+              There are no projects available in the &quot;{activeCategory}
+              &quot; category
+              {searchQuery && " matching your search query"}.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
