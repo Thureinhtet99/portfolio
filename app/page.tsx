@@ -71,7 +71,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="/resume/CV.pdf" target="_self" download={true}>
+                <Link href="/resume/CV.pdf" target="_blank" download={true}>
                   <HardDriveDownload className="h-4 w-4 mr-2" />
                   Download CV
                 </Link>
