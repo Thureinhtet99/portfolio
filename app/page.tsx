@@ -13,7 +13,6 @@ import {
   FaCss3,
   FaBootstrap,
   FaGitAlt,
-  // FaLaravel,
   FaGithub,
 } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
@@ -72,7 +71,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="" target="_self" download={true}>
+                <Link href="/resume/CV.pdf" target="_self" download={true}>
                   <HardDriveDownload className="h-4 w-4 mr-2" />
                   Download CV
                 </Link>

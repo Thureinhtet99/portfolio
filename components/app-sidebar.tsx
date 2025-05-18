@@ -15,7 +15,9 @@ import {
 import Link from "next/link";
 import { HardDriveDownload } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
-const resumePath = "/resume/My-resume.pdf";
+
+
+const resumePath = "/resume/CV.pdf";
 
 const data = {
   navMain: [
