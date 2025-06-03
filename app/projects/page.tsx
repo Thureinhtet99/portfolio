@@ -46,12 +46,12 @@ export default function ProjectsPage() {
         </div>
 
         {/* Categories */}
-        <div className="flex gap-2 overflow-x-auto p-2">
+        <div className="flex gap-2 overflow-x-auto px-2">
           {categories.map((category) => (
             <Badge
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
-              className="cursor-pointer whitespace-nowrap"
+              className="cursor-pointer whitespace-nowrap p-2"
               onClick={() => setActiveCategory(category)}
             >
               {category}

@@ -16,7 +16,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiMysql, SiMongodb, SiPrisma } from "react-icons/si";
+import { SiMysql, SiMongodb, SiPrisma, SiPostgresql } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
 import profile from "@/public/me.jpg";
 import { motion } from "framer-motion";
@@ -47,6 +47,7 @@ const technologies = [
   { name: "MongoDB", icon: <SiMongodb className="text-3xl text-[#47A248]" /> },
   { name: "PrismaORM", icon: <SiPrisma className="text-3xl text-[#0C344B]" /> },
   { name: "MySQL", icon: <SiMysql className="text-3xl text-[#4479A1]" /> },
+  { name: "Postgres", icon: <SiPostgresql className="text-3xl text-[#4479A1]" /> },
   { name: "Git", icon: <FaGitAlt className="text-3xl text-[#F05032]" /> },
   { name: "Github", icon: <FaGithub className="text-3xl" /> },
 ];
@@ -57,8 +58,8 @@ export default function Home() {
       <div className="space-y-28">
         {/* Hero Section */}
         <section className="flex flex-col-reverse md:flex-row items-center gap-6 py-4 max-w-3xl mx-auto">
-          <div className="flex-1 space-y-4">
-            <h1 className="text-4xl font-bold">
+          <div className="flex-1 space-y-6">
+            <h1 className="text-4xl font-bold mb-0">
               Hi, <span className="text-2xl text-blue-400">I&apos;m </span> Thu
               Rein Htet
             </h1>
@@ -124,8 +125,8 @@ export default function Home() {
           <h2 className="text-2xl font-bold">About Me</h2>
           <p className="text-muted-foreground">
             I&apos;m a passionate Full-Stack Developer with experience in
-            building dynamic and scalable web applications. With experience in
-            both front-end and back-end development, I strive to build seamless
+            building dynamic web applications. With experience in
+            both front-end and back-end development, I&apos;m striving to build seamless
             user experiences that solve real-world problems.
           </p>
         </section>
