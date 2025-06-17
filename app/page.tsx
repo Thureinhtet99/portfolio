@@ -20,6 +20,7 @@ import { SiMysql, SiMongodb, SiPrisma, SiPostgresql } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
 import profile from "@/public/me.jpg";
 import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 import { projects as featuredProjects } from "@/data/projects";
 
 const technologies = [
@@ -47,7 +48,10 @@ const technologies = [
   { name: "MongoDB", icon: <SiMongodb className="text-3xl text-[#47A248]" /> },
   { name: "PrismaORM", icon: <SiPrisma className="text-3xl text-[#0C344B]" /> },
   { name: "MySQL", icon: <SiMysql className="text-3xl text-[#4479A1]" /> },
-  { name: "Postgres", icon: <SiPostgresql className="text-3xl text-[#4479A1]" /> },
+  {
+    name: "Postgres",
+    icon: <SiPostgresql className="text-3xl text-[#4479A1]" />,
+  },
   { name: "Git", icon: <FaGitAlt className="text-3xl text-[#F05032]" /> },
   { name: "Github", icon: <FaGithub className="text-3xl" /> },
 ];
@@ -63,7 +67,22 @@ export default function Home() {
               Hi, <span className="text-2xl text-blue-400">I&apos;m </span> Thu
               Rein Htet
             </h1>
-            <p className="text-xl text-muted-foreground">Web Developer</p>
+            <div className="text-xl text-muted-foreground h-8">
+              <TypeAnimation
+                sequence={[
+                  "Web Developer",
+                  1500,
+                  "Frontend Developer",
+                  1500,
+                  "Backend Developer",
+                  1500,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+                className="text-xl"
+              />
+            </div>
             <div className="flex gap-4">
               <Button asChild>
                 <Link href="/contact">
@@ -125,9 +144,9 @@ export default function Home() {
           <h2 className="text-2xl font-bold">About Me</h2>
           <p className="text-muted-foreground">
             I&apos;m a passionate Full-Stack Developer with experience in
-            building dynamic web applications. With experience in
-            both front-end and back-end development, I&apos;m striving to build seamless
-            user experiences that solve real-world problems.
+            building dynamic web applications. With experience in both front-end
+            and back-end development, I&apos;m striving to build seamless user
+            experiences that solve real-world problems.
           </p>
         </section>
 

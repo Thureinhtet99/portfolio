@@ -29,7 +29,7 @@ export const projects = [
   },
   {
     image: NarutoVerse,
-    title: "Naruto Verse",
+    title: "Narutoverse",
     description:
       "An immersive fan-based website dedicated to the Naruto universe, featuring character profiles, story arcs, and interactive elements. Designed with modern UI/UX principles brings the ninja world to life for fans with Api.",
     category: "UI/UX Design", // Category

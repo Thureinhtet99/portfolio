@@ -15,6 +15,9 @@ import {
 import Link from "next/link";
 import { HardDriveDownload } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
 
 
 const resumePath = "/resume/CV.pdf";
@@ -42,7 +45,7 @@ const data = {
   navSecondary: [
     {
       title: "Facebook",
-      url: "https://www.facebook.com/profile.php?id=100010238821531",
+      url: "https://www.facebook.com/profile.php?id=100056964217962",
       icon: <FaFacebook className="h-4 w-4 mr-2" />,
     },
     {
@@ -70,20 +73,42 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <SidebarMenu className="flex justify-center">
-          <SidebarMenuItem className="w-full max-w-[250px]">
-            <SidebarMenuButton size="lg" asChild>
-              <Link
-                href="/"
-                className="w-full flex justify-center items-center"
-              >
-                <span className="font-semibold text-center">
-                  Thu Rein Htet&apos;s Portfolio
-                </span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <motion.div 
+          className="flex flex-col items-center py-6 px-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Avatar className="h-25 w-25 shadow">
+              <AvatarImage src="/me.jpg" alt="Profile" className="object-cover"/>
+              <AvatarFallback>TH</AvatarFallback>
+            </Avatar>
+          </motion.div>
+          
+          <motion.h3 
+            className="text-lg font-semibold mt-3 mb-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            Thu Rein Htet
+          </motion.h3>
+          
+          <motion.p 
+            className="text-sm text-muted-foreground mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            Web Developer
+          </motion.p>
+          
+          <Separator className="w-full" />
+        </motion.div>
       </SidebarHeader>
 
       <SidebarContent>

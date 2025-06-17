@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 
 const certificates = [
   {
@@ -52,12 +53,13 @@ export default function CertificatesPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-end mb-8">
-        <div className="relative w-full md:w-64">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+      <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
+        {/* Search */}
+        <div className="relative w-full md:w-80">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search certificates..."
-            className="pl-8"
+            placeholder="Search certificates with title..."
+            className="pl-10 h-11 border-slate-200 dark:border-slate-800"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -83,9 +85,7 @@ export default function CertificatesPage() {
             <div className="p-6">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-semibold text-xl">{certificate.title}</h3>
-                <span className="text-sm text-muted-foreground">
-                  {certificate.date}
-                </span>
+                <Badge>{certificate.date}</Badge>
               </div>
               <p className="text-muted-foreground">
                 Issued by: {certificate.issuer}
