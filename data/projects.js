@@ -1,6 +1,7 @@
 import Wda from "@/public/project-images/wda.png";
 import Academic from "@/public/project-images/academic-center.png";
 import NarutoVerse from "@/public/project-images/narutoverse.png";
+import SMS from "@/public/project-images/student_management_system.png";
 
 export const projects = [
   {
@@ -12,6 +13,8 @@ export const projects = [
     techStacks: ["React", "Next.js", "Tailwind"],
     isGitHub: false,
     isLiveDemo: true,
+    upcoming: false,
+    expectedCompletion: "",
     github: "",
     liveDemo: "https://windentalacademy.com/",
   },
@@ -24,6 +27,8 @@ export const projects = [
     techStacks: ["React", "Laravel"],
     isGitHub: true,
     isLiveDemo: false,
+    upcoming: false,
+    expectedCompletion: "",
     github: "https://github.com/Thureinhtet99/Academic-Center",
     liveDemo: "",
   },
@@ -36,8 +41,27 @@ export const projects = [
     techStacks: ["Next.js", "Tailwind", "Shadcn"],
     isGitHub: true,
     isLiveDemo: true,
+    upcoming: false,
+    expectedCompletion: "",
     github: "https://github.com/Thureinhtet99/narutoverse",
     liveDemo: "https://narutoverse-kappa.vercel.app/",
+  },
+  {
+    image: SMS,
+    title: "Student Management System",
+    description:
+      "A comprehensive solution for educational institutions to streamline student data management, attendance tracking, grade reporting, and administrative tasks. Features a clean, intuitive dashboard with real-time analytics and responsive design for access across all devices.",
+    // description: "",
+    category: "Web Development", // Category
+    // techStacks: ["Next.js", "Shadcn"],
+    techStacks: [],
+    isGitHub: true,
+    isLiveDemo: true,
+    upcoming: true,
+    expectedCompletion: "",
+    // github: "https://github.com/Thureinhtet99/Student-Mangement-System",
+    github: "",
+    liveDemo: "",
   },
 
   // Add more projects here...

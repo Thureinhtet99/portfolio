@@ -8,39 +8,41 @@ import { Badge } from "@/components/ui/badge";
 
 const certificates = [
   {
+    title: "Back End Development & APIs",
+    issuer: "freeCodeCamp",
+    date: "2025",
+    verificationUrl:
+      "https://www.freecodecamp.org/certification/ThureinHtet/back-end-development-and-apis",
+  },
+  {
     title: "Full-Stack Developer Course",
     issuer: "Codelab",
     date: "2023",
     image: "/certificate-images/FDC-Certificate.jpg",
-    verificationUrl: "https://verify.example.com/cert1",
   },
   {
     title: "Professional React Course",
     issuer: "Codelab",
     date: "2024",
     image: "/certificate-images/Professional React Course.jpg",
-    verificationUrl: "https://verify.example.com/cert2",
   },
   {
     title: "Web Design Course",
     issuer: "Codelab",
     date: "2023",
     image: "/certificate-images/Web Design Certificate.jpg",
-    verificationUrl: "https://verify.example.com/cert2",
   },
   {
     title: "Vue + Laravel Full-Stack Course",
     issuer: "Codelab",
     date: "2023",
     image: "/certificate-images/Vue + Laravel.jpg",
-    verificationUrl: "https://verify.example.com/cert2",
   },
   {
     title: "BYU Pathway",
     issuer: "BYU Pathway",
     date: "2023",
     image: "/certificate-images/BYU Pathway.JPG",
-    verificationUrl: "https://verify.example.com/cert2",
   },
 ];
 
@@ -72,16 +74,24 @@ export default function CertificatesPage() {
             key={certificate.title}
             className="group rounded-lg border dark:border-slate-800 overflow-hidden hover:border-primary/50 transition-colors"
           >
-            <div className="aspect-[16/9] relative">
-              <Image
-                src={certificate.image}
-                alt={certificate.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            {certificate.image ? (
+              <div className="aspect-[16/9] relative">
+                <Image
+                  src={certificate.image}
+                  alt={certificate.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            ) : (
+              <div className="aspect-[16/9] bg-slate-100 dark:bg-slate-800 flex items-center justify-center p-6">
+                <h2 className="text-xl font-medium text-center">
+                  {certificate.title}
+                </h2>
+              </div>
+            )}
             <div className="p-6">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-semibold text-xl">{certificate.title}</h3>
@@ -90,14 +100,20 @@ export default function CertificatesPage() {
               <p className="text-muted-foreground">
                 Issued by: {certificate.issuer}
               </p>
-              <a
-                href={certificate.verificationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 text-sm font-medium hover:underline"
-              >
-                Verify Certificate →
-              </a>
+              {certificate.verificationUrl ? (
+                <a
+                  href={certificate.verificationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 text-sm font-medium hover:underline"
+                >
+                  Verify Certificate →
+                </a>
+              ) : (
+                <p className="mt-4 text-sm text-muted-foreground italic">
+                  No verification available
+                </p>
+              )}
             </div>
           </div>
         ))}
