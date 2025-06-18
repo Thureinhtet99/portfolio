@@ -16,9 +16,6 @@ import Link from "next/link";
 import { HardDriveDownload } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-
 
 const resumePath = "/resume/CV.pdf";
 
@@ -73,41 +70,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <motion.div 
-          className="flex flex-col items-center py-6 px-4"
+        <motion.div
+          className="flex flex-col items-center px-4"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Avatar className="h-25 w-25 shadow">
-              <AvatarImage src="/me.jpg" alt="Profile" className="object-cover"/>
-              <AvatarFallback>TH</AvatarFallback>
-            </Avatar>
-          </motion.div>
-          
-          <motion.h3 
-            className="text-lg font-semibold mt-3 mb-1"
+          <motion.h3
+            className="text-lg font-semibold my-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             Thu Rein Htet
           </motion.h3>
-          
-          <motion.p 
-            className="text-sm text-muted-foreground mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            Web Developer
-          </motion.p>
-          
-          <Separator className="w-full" />
         </motion.div>
       </SidebarHeader>
 

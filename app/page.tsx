@@ -111,7 +111,6 @@ export default function Home() {
               repeat: Infinity,
             }}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/50 to-secondary/50 blur-xl animate-pulse" />
             <motion.div
               className="relative w-full h-full rounded-full overflow-hidden"
               animate={{
