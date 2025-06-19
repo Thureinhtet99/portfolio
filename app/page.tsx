@@ -44,7 +44,6 @@ const technologies = [
     icon: <RiNextjsFill className="text-3xl dark:text-white text-black" />,
   },
   { name: "Nodejs", icon: <FaNodeJs className="text-3xl text-[#339933]" /> },
-  // { name: "Laravel", icon: <FaLaravel className="text-3xl text-[#FF2D20]" /> },
   { name: "MongoDB", icon: <SiMongodb className="text-3xl text-[#47A248]" /> },
   { name: "PrismaORM", icon: <SiPrisma className="text-3xl text-[#0C344B]" /> },
   { name: "MySQL", icon: <SiMysql className="text-3xl text-[#4479A1]" /> },
@@ -58,16 +57,15 @@ const technologies = [
 
 export default function Home() {
   return (
-    <>
-      <div className="space-y-28">
+    <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <div className="space-y-16 sm:space-y-20 md:space-y-28">
         {/* Hero Section */}
-        <section className="flex flex-col-reverse md:flex-row items-center gap-6 py-4 max-w-3xl mx-auto">
-          <div className="flex-1 space-y-6">
-            <h1 className="text-4xl font-bold mb-0">
-              Hi, <span className="text-2xl text-blue-400">I&apos;m </span> Thu
-              Rein Htet
+        <section className="flex flex-col-reverse md:flex-row items-center gap-8 py-4 max-w-3xl mx-auto">
+          <div className="flex-1 space-y-4 sm:space-y-6 text-center md:text-left">
+            <h1 className="text-3xl sm:text-4xl font-bold">
+              Hi, <span className="text-xl sm:text-2xl text-blue-400">I&apos;m </span> Thu Rein Htet
             </h1>
-            <div className="text-xl text-muted-foreground h-8">
+            <div className="text-lg sm:text-xl text-muted-foreground h-8">
               <TypeAnimation
                 sequence={[
                   "Web Developer",
@@ -80,19 +78,18 @@ export default function Home() {
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="text-xl"
               />
             </div>
-            <div className="flex gap-4">
-              <Button asChild>
-                <Link href="/contact">
-                  <Mail className="h-5 w-5" />
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              <Button asChild className="px-4">
+                <Link href="/contact" className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 mr-1" />
                   Get in Touch
                 </Link>
               </Button>
-              <Button variant="outline" asChild>
-                <Link href="/resume/CV.pdf" target="_self" download={true}>
-                  <HardDriveDownload className="h-4 w-4 mr-2" />
+              <Button variant="outline" asChild className="px-4">
+                <Link href="/resume/CV.pdf" target="_self" download={true} className="flex items-center gap-2">
+                  <HardDriveDownload className="h-4 w-4 mr-1" />
                   Download CV
                 </Link>
               </Button>
@@ -100,7 +97,7 @@ export default function Home() {
           </div>
 
           <motion.div
-            className="relative w-[240px] h-[240px]"
+            className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[240px] md:h-[240px]"
             animate={{
               scale: [1, 1.02, 1],
               rotate: [0, 1, -1, 0],
@@ -129,19 +126,19 @@ export default function Home() {
               <Image
                 src={profile}
                 alt="Thu Rein Htet"
-                width={300}
-                height={300}
+                fill
                 className="object-cover"
                 priority
+                sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 240px"
               />
             </motion.div>
           </motion.div>
         </section>
 
         {/* About Section */}
-        <section className="space-y-4 max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold">About Me</h2>
-          <p className="text-muted-foreground">
+        <section className="space-y-4 max-w-3xl mx-auto text-center px-4">
+          <h2 className="text-xl sm:text-2xl font-bold">About Me</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">
             I&apos;m a passionate Full-Stack Developer with experience in
             building dynamic web applications. With experience in both front-end
             and back-end development, I&apos;m striving to build seamless user
@@ -150,79 +147,88 @@ export default function Home() {
         </section>
 
         {/* Technologies */}
-        <section className="space-y-4 max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold">Technologies I Work With</h2>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+        <section className="space-y-4 max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-xl sm:text-2xl font-bold">Technologies I Work With</h2>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-4">
             {technologies.map((tech) => (
               <div
                 key={tech.name}
-                className="flex flex-col items-center gap-2 p-4 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors"
+                className="flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-4 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors"
               >
-                {tech.icon}
-                <span className="text-sm">{tech.name}</span>
+                <div className="text-xl sm:text-3xl">{tech.icon}</div>
+                <span className="text-xs sm:text-sm">{tech.name}</span>
               </div>
             ))}
           </div>
         </section>
 
         {/* Featured Projects Section */}
-        <section className="space-y-6">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">Featured Projects</h2>
-            <Button variant="ghost" asChild>
+        <section className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold">Featured Projects</h2>
+            <Button variant="ghost" asChild className="px-0 sm:px-4">
               <Link href="/projects" className="flex items-center gap-2">
                 View All Projects <MoveRight size={16} />
               </Link>
             </Button>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {featuredProjects
+              .slice(0, 2)
               .map((project) => (
                 <Card
                   key={project.title}
-                  className="group hover:border-primary/50 transition-colors h-[600px] flex flex-col"
+                  className="group hover:border-primary/50 transition-colors flex flex-col h-full"
                 >
-                  <div className="relative h-[280px] grid grid-cols-1 px-2">
-                    <div className="relative rounded-md overflow-hidden">
+                  <div className="p-2">
+                    <div className="relative aspect-video w-full rounded-md overflow-hidden">
                       <Image
                         src={project.image}
                         alt={project.title}
-                        className="object-cover h-auto"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </div>
                   </div>
-                  <div className="px-4 flex flex-col flex-1">
-                    <h3 className="font-semibold text-lg">{project.title}</h3>
-                    <p className="text-muted-foreground mt-2 flex-1">
+                  <div className="px-4 pb-4 flex flex-col flex-1">
+                    <h3 className="font-semibold text-lg line-clamp-1">{project.title}</h3>
+                    <p className="text-muted-foreground mt-2 flex-1 text-sm sm:text-base line-clamp-3 sm:line-clamp-4">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {project.techStacks.map((tech) => (
-                        <Badge key={tech} variant="secondary">
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {project.techStacks.slice(0, 3).map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-xs">
                           {tech}
                         </Badge>
                       ))}
+                      {project.techStacks.length > 3 && (
+                        <Badge variant="secondary" className="text-xs">
+                          +{project.techStacks.length - 3}
+                        </Badge>
+                      )}
                     </div>
-                    <div className="flex gap-2 mt-4">
+                    <div className="flex gap-2 mt-4 flex-wrap sm:flex-nowrap">
                       <Button
                         variant="outline"
                         size="sm"
                         disabled={!project.isGitHub}
                         asChild={project.isGitHub}
+                        className="w-full sm:w-auto"
                       >
                         {project.isGitHub ? (
                           <Link
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2"
+                            className="flex items-center justify-center gap-2"
                           >
                             <FaGithub className="h-4 w-4" />
                             Code
                           </Link>
                         ) : (
-                          <span className="flex items-center gap-2">
+                          <span className="flex items-center justify-center gap-2">
                             <FaGithub className="h-4 w-4" />
                             Code
                           </span>
@@ -232,18 +238,19 @@ export default function Home() {
                         size="sm"
                         disabled={!project.isLiveDemo}
                         asChild={project.isLiveDemo}
+                        className="w-full sm:w-auto"
                       >
                         {project.isLiveDemo ? (
                           <Link
                             href={project.liveDemo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2"
+                            className="flex items-center justify-center gap-2"
                           >
                             Visit site <MoveRight className="h-4 w-4" />
                           </Link>
                         ) : (
-                          <span className="flex items-center gap-2">
+                          <span className="flex items-center justify-center gap-2">
                             Visit site <MoveRight className="h-4 w-4" />
                           </span>
                         )}
@@ -251,11 +258,10 @@ export default function Home() {
                     </div>
                   </div>
                 </Card>
-              ))
-              .slice(0, 2)}
+              ))}
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 }

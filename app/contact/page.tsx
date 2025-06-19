@@ -65,7 +65,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base mx-auto max-w-md">
-            Have a question or want to work together? Send me a message and I'll
+            Have a question or want to work together? Send me a message and I&apos;ll
             get back to you as soon as possible.
           </p>
         </div>

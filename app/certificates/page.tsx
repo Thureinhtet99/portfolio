@@ -96,8 +96,8 @@ export default function CertificatesPage() {
             No certificates found
           </h3>
           <p className="text-muted-foreground max-w-md mx-auto text-sm sm:text-base px-4">
-            No certificates matching your search query "{searchQuery}". Try
-            adjusting your search.
+            No certificates matching your search query &quot;{searchQuery}
+            &quot;. Try adjusting your search.
           </p>
         </div>
       )}
