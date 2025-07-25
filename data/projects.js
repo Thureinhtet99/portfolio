@@ -49,18 +49,15 @@ export const projects = [
   {
     image: SMS,
     title: "Student Management System",
-    // description:
-    //   "A comprehensive solution for educational institutions to streamline student data management, attendance tracking, grade reporting, and administrative tasks. Features a clean, intuitive dashboard with real-time analytics and responsive design for access across all devices.",
-    description: "",
+    description:
+      "A comprehensive solution for educational institutions to streamline student data management, attendance tracking, grade reporting, and administrative tasks. Features a clean, intuitive dashboard with real-time analytics and responsive design for access across all devices.",
     category: "Web Development",
-    // techStacks: ["Next.js", "Shadcn"],
-    techStacks: [],
+    techStacks: ["Next.js", "Typescript", "Shadcn", "Clerk"],
     isGitHub: true,
-    isLiveDemo: true,
-    upcoming: true,
+    isLiveDemo: false,
+    upcoming: false,
     expectedCompletion: "",
-    // github: "https://github.com/Thureinhtet99/Student-Mangement-System",
-    github: "",
+    github: "https://github.com/Thureinhtet99/Student-Mangement-System",
     liveDemo: "",
   },
 

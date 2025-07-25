@@ -193,7 +193,7 @@ export default function ProjectsPage() {
                       <Clock className="h-16 w-16 text-muted-foreground opacity-50" />
                     )}
                     <div className="absolute top-2 right-2">
-                      <Badge variant="secondary" className="bg-primary/10">
+                      <Badge variant="default" className="bg-primary">
                         Coming Soon
                       </Badge>
                     </div>
