@@ -102,16 +102,12 @@ export default function ProjectsPage() {
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mt-3">
-                    {project.techStacks.slice(0, 3).map((tech) => (
+                    {project.techStacks.map((tech) => (
                       <Badge key={tech} variant="secondary" className="text-xs">
                         {tech}
                       </Badge>
                     ))}
-                    {project.techStacks.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{project.techStacks.length - 3}
-                      </Badge>
-                    )}
+                   
                   </div>
                   <div className="flex gap-2 mt-4 flex-wrap sm:flex-nowrap">
                     <Button

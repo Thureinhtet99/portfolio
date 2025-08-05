@@ -11,10 +11,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { HardDriveDownload } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
+
 import { motion } from "framer-motion";
 
 const resumePath = "/resume/CV.pdf";
@@ -56,6 +59,12 @@ const data = {
       icon: <FaGithub className="h-4 w-4 mr-2" />,
     },
     {
+      title: "Email",
+      url: "https://mail.google.com/mail/?view=cm&fs=1&to=thureinhtet653@gmail.com",
+      icon: <IoIosMail className="h-4 w-4 mr-2" />,
+    },
+
+    {
       title: "Download CV",
       url: resumePath,
       icon: <HardDriveDownload className="h-4 w-4 mr-2" />,
@@ -66,6 +75,13 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleNavClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <Sidebar {...props}>
@@ -106,6 +122,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Link
                     href={item.url}
                     className="font-medium text-lg text-center block"
+                    onClick={handleNavClick}
                   >
                     {item.title}
                   </Link>
@@ -138,6 +155,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     target={item.download ? "_self" : "_blank"}
                     rel={item.download ? undefined : "noopener noreferrer"}
                     download={item.download}
+                    onClick={!item.download ? handleNavClick : undefined}
                   >
                     {item.icon}
                     {item.title}
