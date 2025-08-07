@@ -279,7 +279,7 @@ export default function About() {
                 </span>{" "}
                 when I first discovered the magic of turning ideas into
                 interactive web experiences. What started as curiosity about
-                "how websites actually work" quickly evolved into a passion that
+                &quot;how websites actually work&quot; quickly evolved into a passion that
                 would reshape my entire career path.
               </p>
 
@@ -362,7 +362,7 @@ export default function About() {
                   </span>
                   , with over {yearsExperience}+ years of hands-on experience, I
                   specialize in creating performant, accessible, and delightful
-                  digital experiences. When I'm not coding, you'll find me
+                  digital experiences. When I&apos;m not coding, you&apos;ll find me
                   exploring emerging technologies, contributing to open-source
                   projects, or mentoring aspiring developers who remind me of
                   where my journey began.

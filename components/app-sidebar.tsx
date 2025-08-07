@@ -16,9 +16,6 @@ import Link from "next/link";
 import { HardDriveDownload } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
-import profile from "@/public/me.jpg";
-import Image from "next/image";
-
 const resumePath = "/resume/CV.pdf";
 
 const data = {
