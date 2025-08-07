@@ -12,6 +12,7 @@ import {
 import { ModeToggle } from "@/components/theme-toggle";
 import { Toaster } from "sonner";
 import QueryProvider from "@/components/QueryProvider";
+import { Footer } from "@/components/Footer";
 
 const robotoMono = Work_Sans({
   variable: "--font-work-sans",
@@ -34,7 +35,7 @@ export default function RootLayout({
         <QueryProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
@@ -51,12 +52,13 @@ export default function RootLayout({
                     </div>
                   </div>
                 </header>
-                <main>
+                <main className="flex-1">
                   <div className="container mx-auto p-4">
                     {children}
                     <Toaster />
                   </div>
                 </main>
+                <Footer />
               </SidebarInset>
             </SidebarProvider>
           </ThemeProvider>

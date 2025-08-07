@@ -19,6 +19,20 @@ export const projects = [
     liveDemo: "https://windentalacademy.com/",
   },
   {
+    image: SMS,
+    title: "Student Management System",
+    description:
+      "A comprehensive solution for educational institutions to streamline student data management, attendance tracking, grade reporting, and administrative tasks.",
+    category: "Web Development",
+    techStacks: ["Next.js", "Typescript", "Shadcn", "Clerk"],
+    isGitHub: true,
+    isLiveDemo: false,
+    upcoming: false,
+    expectedCompletion: "",
+    github: "https://github.com/Thureinhtet99/Student-Mangement-System",
+    liveDemo: "",
+  },
+  {
     image: Academic,
     title: "Academic Center",
     description:
@@ -39,27 +53,14 @@ export const projects = [
       "An immersive fan-based website dedicated to the Naruto universe, featuring character profiles, story arcs, and interactive elements.",
     category: "UI/UX Design",
     techStacks: ["Next.js", "Tailwind", "Shadcn"],
-    isGitHub: true,
+    isGitHub: false,
     isLiveDemo: true,
     upcoming: false,
     expectedCompletion: "",
     github: "https://github.com/Thureinhtet99/narutoverse",
     liveDemo: "https://narutoverse-kappa.vercel.app/",
   },
-  {
-    image: SMS,
-    title: "Student Management System",
-    description:
-      "A comprehensive solution for educational institutions to streamline student data management, attendance tracking, grade reporting, and administrative tasks.",
-    category: "Web Development",
-    techStacks: ["Next.js", "Typescript", "Shadcn", "Clerk"],
-    isGitHub: true,
-    isLiveDemo: false,
-    upcoming: false,
-    expectedCompletion: "",
-    github: "https://github.com/Thureinhtet99/Student-Mangement-System",
-    liveDemo: "",
-  },
+
   {
     image: "",
     title: "Expense tracker",

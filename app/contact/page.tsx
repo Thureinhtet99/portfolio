@@ -18,6 +18,7 @@ import { toast } from "sonner";
 import { Send } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 // Form schema
 const formSchema = z.object({
@@ -59,14 +60,19 @@ export default function Contact() {
 
   return (
     <div className="container px-4 sm:px-6 max-w-2xl mx-auto py-8 sm:py-10 lg:py-12">
-      <div className="space-y-6">
+      <motion.div
+        className="space-y-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2 }}
+      >
         <div className="space-y-2 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             Get in Touch
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base mx-auto max-w-md">
-            Have a question or want to work together? Send me a message and I&apos;ll
-            get back to you as soon as possible.
+            Have a question or want to work together? Send me a message and
+            I&apos;ll get back to you as soon as possible.
           </p>
         </div>
 
@@ -168,7 +174,7 @@ export default function Contact() {
 
               <Button
                 type="submit"
-                className="w-full mt-2 sm:mt-4 h-10 sm:h-11"
+                className="w-full mt-2 sm:mt-4"
                 disabled={isPending}
               >
                 {isPending ? (
@@ -205,7 +211,7 @@ export default function Contact() {
             </form>
           </Form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
