@@ -13,7 +13,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { HardDriveDownload, Loader2 } from "lucide-react";
+import { HardDriveDownload } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 const resumePath = "/resume/CV.pdf";
