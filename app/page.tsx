@@ -226,7 +226,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 gap-4 pt-4">
             <div className="text-center p-4 rounded-lg">
-              <div className="text-2xl font-bold text-primary">
+              <div className="text-2xl font-bold text-green-400">
                 {yearsExperience}+
               </div>
               <div className="text-sm text-muted-foreground">
@@ -234,7 +234,7 @@ export default function Home() {
               </div>
             </div>
             <div className="text-center p-4 rounded-lg">
-              <div className="text-2xl font-bold text-green-400 dark:text-green-800">
+              <div className="text-2xl font-bold text-primary">
                 {projectsCompleted}+
               </div>
               <div className="text-sm text-muted-foreground">

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +13,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { HardDriveDownload } from "lucide-react";
+import { HardDriveDownload, Loader2 } from "lucide-react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 const resumePath = "/resume/CV.pdf";
@@ -75,9 +75,36 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+  const router = useRouter();
   const { isMobile, setOpenMobile } = useSidebar();
+  const [isPending, startTransition] = React.useTransition();
+  const [pendingPath, setPendingPath] = React.useState<string | null>(null);
 
-  const handleNavClick = () => {
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (pathname === href) {
+      if (isMobile) {
+        setOpenMobile(false);
+      }
+      return;
+    }
+
+    setPendingPath(href);
+    startTransition(() => {
+      router.push(href);
+      if (isMobile) {
+        setOpenMobile(false);
+      }
+    });
+
+    // Reset pending state after a short delay
+    // setTimeout(() => {
+    //   setPendingPath(null);
+    // }, 500);
+  };
+
+  const handleExternalClick = () => {
     if (isMobile) {
       setOpenMobile(false);
     }
@@ -95,16 +122,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     asChild
                     className={`w-full px-4 group relative overflow-hidden transition-all duration-200 ${
                       pathname === item.url && "text-primary font-medium"
+                    } ${
+                      isPending && pendingPath !== item.url
+                        ? "opacity-50 pointer-events-none"
+                        : ""
                     }`}
                   >
                     <Link
                       href={item.url}
                       className="flex items-center justify-start h-10 text-base font-medium relative z-10"
-                      onClick={handleNavClick}
+                      onClick={(e) => handleNavClick(item.url, e)}
                     >
                       {pathname === item.url && (
                         <div className="absolute inset-0 rounded-md" />
                       )}
+                      {/* {pendingPath === item.url && isPending && (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        )} */}
                       {item.title}
                     </Link>
                   </SidebarMenuButton>
@@ -123,7 +157,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
-                    className="w-full hover:bg-primary/5 hover:text-primary dark:hover:bg-blue-800/10 dark:hover:text-primary transition-all duration-200 group"
+                    className={`w-full hover:bg-primary/5 hover:text-primary dark:hover:bg-blue-800/10 dark:hover:text-primary transition-all duration-200 group ${
+                      isPending ? "opacity-50 pointer-events-none" : ""
+                    }`}
                   >
                     <Link
                       href={item.url}
@@ -131,7 +167,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       target={item.download ? "_self" : "_blank"}
                       rel={item.download ? undefined : "noopener noreferrer"}
                       download={item.download}
-                      onClick={!item.download ? handleNavClick : undefined}
+                      onClick={!item.download ? handleExternalClick : undefined}
                     >
                       <span className="text-muted-foreground hover:text-primary transition-colors">
                         {item.icon}

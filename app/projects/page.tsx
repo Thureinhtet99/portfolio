@@ -12,7 +12,7 @@ import { projects } from "@/data/projects";
 import { BiWorld } from "react-icons/bi";
 import { motion } from "framer-motion";
 
-const categories = ["All", "Web", "Mobile"];
+const categories = ["All", "Web development", "Mobile development", "Web design"];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -38,17 +38,19 @@ export default function ProjectsPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <h2 className="text-2xl font-bold">Current Projects</h2>
             {/* Categories */}
-            <div className="flex flex-wrap gap-2 items-center">
-              {categories.map((category) => (
-                <Badge
-                  key={category}
-                  variant={activeCategory === category ? "default" : "outline"}
-                  className="cursor-pointer whitespace-nowrap py-1.5 px-3 text-sm transition-all"
-                  onClick={() => setActiveCategory(category)}
-                >
-                  {category}
-                </Badge>
-              ))}
+            <div className="w-full sm:w-auto overflow-x-auto">
+              <div className="flex gap-2 items-center min-w-max pb-2 sm:pb-0">
+                {categories.map((category) => (
+                  <Badge
+                    key={category}
+                    variant={activeCategory === category ? "default" : "outline"}
+                    className="cursor-pointer whitespace-nowrap py-1.5 px-3 text-sm transition-all flex-shrink-0"
+                    onClick={() => setActiveCategory(category)}
+                  >
+                    {category}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -72,11 +74,11 @@ export default function ProjectsPage() {
                     <h3 className="font-bold text-xl line-clamp-1 mb-3">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground flex-1 text-sm sm:text-base line-clamp-2 leading-relaxed">
+                    <p className="text-muted-foreground flex-1 text-sm sm:text-base leading-relaxed">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">
-                      {project.techStacks.slice(0, 2).map((tech) => (
+                      {project.techStacks.map((tech) => (
                         <Badge
                           key={tech}
                           variant="secondary"
@@ -85,11 +87,6 @@ export default function ProjectsPage() {
                           {tech}
                         </Badge>
                       ))}
-                      {project.techStacks.length > 2 && (
-                        <Badge variant="outline" className="text-xs px-3 py-1">
-                          +{project.techStacks.length - 2} more
-                        </Badge>
-                      )}
                     </div>
                     <div className="flex gap-3 mt-5 flex-wrap justify-between items-center sm:flex-nowrap">
                       <div className="flex justify-between items-center">
@@ -142,7 +139,7 @@ export default function ProjectsPage() {
                           )}
                         </Button>
                       </div>
-                      <Button
+                      {/* <Button
                         size="sm"
                         className="w-full sm:w-auto text-primary hover:text-blue-800 dark:hover:text-blue-200"
                         variant="ghost"
@@ -155,7 +152,7 @@ export default function ProjectsPage() {
                         >
                           View Details <MoveRight className="h-4 w-4" />
                         </Link>
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </Card>

@@ -1,16 +1,17 @@
 import Wda from "@/public/project-images/wda.png";
 import Academic from "@/public/project-images/academic-center.png";
 import NarutoVerse from "@/public/project-images/narutoverse.png";
-import SMS from "@/public/project-images/student_management_system.png";
+import Sms from "@/public/project-images/student_management_system.png";
 
 export const projects = [
+  // Last 2 projects are featured projects
   {
     image: Wda,
     title: "Win Dental Academy",
     description:
-      "A landing page for Win Dental Academy, featuring modern interface that showcases dental courses, and organizations.",
+      "A comprehensive digital learning platform designed for dental professionals, featuring course catalog, managable organizations, courses and updated news with CRUD admin panel.",
     category: "Web Development",
-    techStacks: ["Next.js", "Tailwind", "Shadcn"],
+    techStacks: ["Next.js", "Javascript", "Tailwind", "Shadcn", "Prisma"],
     isGitHub: false,
     isLiveDemo: true,
     upcoming: false,
@@ -19,12 +20,12 @@ export const projects = [
     liveDemo: "https://windentalacademy.com/",
   },
   {
-    image: SMS,
+    image: Sms,
     title: "Student Management System",
     description:
-      "A comprehensive solution for educational institutions to streamline student data management, attendance tracking, grade reporting, and administrative tasks.",
+      "An educational management platform with secure authentication, real-time student tracking, grade analytics, and administrative dashboard for streamlined institutional operations with various features.",
     category: "Web Development",
-    techStacks: ["Next.js", "Typescript", "Shadcn", "Clerk"],
+    techStacks: ["Next.js", "Typescript", "Shadcn", "Clerk", "Prisma"],
     isGitHub: true,
     isLiveDemo: false,
     upcoming: false,
@@ -36,7 +37,7 @@ export const projects = [
     image: Academic,
     title: "Academic Center",
     description:
-      "An E-learning project with responsive design that includes courses and user interactions.",
+      "A modern e-learning ecosystem built with React and Laravel, featuring progressive course structures, interactive assignments.",
     category: "Web Development",
     techStacks: ["React", "Laravel"],
     isGitHub: true,
@@ -50,8 +51,8 @@ export const projects = [
     image: NarutoVerse,
     title: "Narutoverse",
     description:
-      "An immersive fan-based website dedicated to the Naruto universe, featuring character profiles, story arcs, and interactive elements.",
-    category: "UI/UX Design",
+      "An immersive anime fan portal showcasing detailed character encyclopedias, story timeline visualizations, and interactive naruto anime world exploration with stunning visual design.",
+    category: "Web",
     techStacks: ["Next.js", "Tailwind", "Shadcn"],
     isGitHub: false,
     isLiveDemo: true,
@@ -65,10 +66,9 @@ export const projects = [
     image: "",
     title: "Expense tracker",
     description:
-      "A simple and responsive expense tracker built with React Native, allowing users to manage and visualize their income and expenses.",
-    // description: "",
+      "A cross-platform mobile application for personal finance management, featuring intelligent expense categorization, visual spending analytics, and offline-capable SQLite data persistence.",
     category: "Web Development",
-    techStacks: ["React native", "Typescript", "Gluestack", "SQlite"],
+    techStacks: ["ReactNative", "Typescript", "Gluestack", "SQlite"],
     isGitHub: true,
     isLiveDemo: false,
     upcoming: true,
