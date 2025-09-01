@@ -80,6 +80,25 @@ export default function CertificatesPage() {
                     <h3 className="text-lg lg:text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 line-clamp-2 leading-tight">
                       {certificate.title}
                     </h3>
+                    {certificate.description && (
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                        {certificate.description}
+                      </p>
+                    )}
+                    {certificate.skills && certificate.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mb-3">
+                        {certificate.skills.map((skill) => (
+                          <Badge key={skill} variant="outline" className="text-xs px-2 py-1">
+                            {skill}
+                          </Badge>
+                        ))}
+                        {/* {certificate.skills.length > 3 && (
+                          <Badge variant="outline" className="text-xs px-2 py-1">
+                            +{certificate.skills.length - 3} more
+                          </Badge>
+                        )} */}
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 lg:gap-4 pt-3 lg:pt-4 border-t border-slate-200 dark:border-slate-700">

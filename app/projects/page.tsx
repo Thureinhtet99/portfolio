@@ -11,8 +11,9 @@ import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/projects";
 import { BiWorld } from "react-icons/bi";
 import { motion } from "framer-motion";
+import { ProjectDetailModal } from "@/components/ProjectDetailModal";
 
-const categories = ["All", "Web development", "Mobile development", "Web design"];
+const categories = ["All", "Web Development", "Mobile Development", "FreeStyle"];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -59,9 +60,9 @@ export default function ProjectsPage() {
               {filteredCurrentProjects.map((project) => (
                 <Card
                   key={project.title}
-                  className="group hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden"
+                  className="group hover:shadow-xl border-0 transition-all duration-300 flex flex-col h-full overflow-hidden"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden">
+                  <div className="relative aspect-video w-full overflow-hidden bg-accent">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -74,7 +75,7 @@ export default function ProjectsPage() {
                     <h3 className="font-bold text-xl line-clamp-1 mb-3">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground flex-1 text-sm sm:text-base leading-relaxed">
+                    <p className="text-muted-foreground flex-1 text-sm sm:text-base line-clamp-2 leading-relaxed">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">
@@ -139,20 +140,17 @@ export default function ProjectsPage() {
                           )}
                         </Button>
                       </div>
-                      {/* <Button
-                        size="sm"
-                        className="w-full sm:w-auto text-primary hover:text-blue-800 dark:hover:text-blue-200"
-                        variant="ghost"
-                      >
-                        <Link
-                          href={project.liveDemo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2"
+                      <ProjectDetailModal project={project}>
+                        <Button
+                          size="sm"
+                          className="w-full sm:w-auto text-primary hover:text-blue-800 dark:hover:text-blue-200"
+                          variant="ghost"
                         >
-                          View Details <MoveRight className="h-4 w-4" />
-                        </Link>
-                      </Button> */}
+                          <span className="flex items-center justify-center gap-2">
+                            View Details <MoveRight className="h-4 w-4" />
+                          </span>
+                        </Button>
+                      </ProjectDetailModal>
                     </div>
                   </div>
                 </Card>

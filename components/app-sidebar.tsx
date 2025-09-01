@@ -25,6 +25,10 @@ const data = {
       url: "/",
     },
     {
+      title: "Timelines",
+      url: "/timelines",
+    },
+    {
       title: "About",
       url: "/about",
     },
@@ -97,11 +101,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         setOpenMobile(false);
       }
     });
-
-    // Reset pending state after a short delay
-    // setTimeout(() => {
-    //   setPendingPath(null);
-    // }, 500);
   };
 
   const handleExternalClick = () => {
@@ -112,71 +111,106 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar {...props}>
-      <SidebarContent className="flex flex-col pt-6">
-        <SidebarGroup className="flex-1 ">
-          <SidebarMenu className="space-y-2">
+      <SidebarContent className="flex flex-col pt-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        {/* Header Section */}
+        <div className="px-6 pb-6">
+          <div className="flex flex-col items-center space-y-3">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-xl">TH</span>
+            </div>
+            <div className="text-center">
+              <h3 className="font-semibold text-sm">Thu Rein Htet</h3>
+              <p className="text-xs text-muted-foreground">
+                Web Developer
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-4 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        <SidebarGroup className="flex-1 px-3 py-4">
+          <SidebarMenu className="space-y-1">
             {data.navMain.map((item) => (
-              <div key={item.title}>
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className={`w-full px-4 group relative overflow-hidden transition-all duration-200 ${
-                      pathname === item.url && "text-primary font-medium"
-                    } ${
-                      isPending && pendingPath !== item.url
-                        ? "opacity-50 pointer-events-none"
-                        : ""
-                    }`}
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton
+                  asChild
+                  className={`w-full px-4 py-3 group relative overflow-hidden transition-all duration-300 rounded-lg ${
+                    pathname === item.url
+                      ? "bg-primary/10 text-primary font-semibold"
+                      : "hover:bg-muted/50 hover:text-foreground"
+                  } ${
+                    isPending && pendingPath !== item.url
+                      ? "opacity-50 pointer-events-none"
+                      : ""
+                  }`}
+                >
+                  <Link
+                    href={item.url}
+                    className="flex items-center justify-start h-auto text-sm font-medium relative z-10"
+                    onClick={(e) => handleNavClick(item.url, e)}
                   >
-                    <Link
-                      href={item.url}
-                      className="flex items-center justify-start h-10 text-base font-medium relative z-10"
-                      onClick={(e) => handleNavClick(item.url, e)}
+                    <span
+                      className={`transition-all duration-300 ${
+                        pathname === item.url ? "ml-2" : "ml-0"
+                      }`}
                     >
-                      {pathname === item.url && (
-                        <div className="absolute inset-0 rounded-md" />
-                      )}
-                      {/* {pendingPath === item.url && isPending && (
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                        )} */}
                       {item.title}
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </div>
+                    </span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             ))}
           </SidebarMenu>
         </SidebarGroup>
 
-        <div className="mx-4 h-px bg-sidebar-border my-4" />
+        <div className="mx-4 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-        <SidebarGroup>
-          <SidebarMenu className="px-3 pb-4 space-y-1">
+        <SidebarGroup className="px-3 py-4">
+          <div className="mb-3">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider px-3">
+              Connect
+            </p>
+          </div>
+          <SidebarMenu className="space-y-1">
             {data.navSecondary.map((item) => (
-              <div key={item.title}>
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className={`w-full hover:bg-primary/5 hover:text-primary dark:hover:bg-blue-800/10 dark:hover:text-primary transition-all duration-200 group ${
-                      isPending ? "opacity-50 pointer-events-none" : ""
-                    }`}
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton
+                  asChild
+                  className="w-full px-3 py-2.5 hover:bg-muted/50 hover:text-primary transition-all duration-300 rounded-lg group"
+                >
+                  <Link
+                    href={item.url}
+                    className="flex items-center justify-start h-auto text-sm font-medium gap-3"
+                    target={item.download ? "_self" : "_blank"}
+                    rel={item.download ? undefined : "noopener noreferrer"}
+                    download={item.download}
+                    onClick={!item.download ? handleExternalClick : undefined}
                   >
-                    <Link
-                      href={item.url}
-                      className="flex items-center justify-start h-10 text-sm font-medium gap-3"
-                      target={item.download ? "_self" : "_blank"}
-                      rel={item.download ? undefined : "noopener noreferrer"}
-                      download={item.download}
-                      onClick={!item.download ? handleExternalClick : undefined}
-                    >
-                      <span className="text-muted-foreground hover:text-primary transition-colors">
-                        {item.icon}
-                      </span>
-                      <span className="truncate">{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </div>
+                    <span className="text-muted-foreground group-hover:text-primary transition-colors duration-300 flex-shrink-0">
+                      {item.icon}
+                    </span>
+                    <span className="truncate group-hover:text-foreground transition-colors duration-300">
+                      {item.title}
+                    </span>
+                    {!item.download && (
+                      <svg
+                        className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors duration-300 ml-auto opacity-0 group-hover:opacity-100"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    )}
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             ))}
           </SidebarMenu>
         </SidebarGroup>

@@ -17,13 +17,14 @@ import {
 import { FaGithub } from "react-icons/fa";
 import profile from "@/public/me.jpg";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
 import { projects as featuredProjects } from "@/data/projects";
 import { useState, useEffect } from "react";
 import { BiWorld } from "react-icons/bi";
+import { ProjectDetailModal } from "@/components/ProjectDetailModal";
 
 export default function Home() {
   const [showFAB, setShowFAB] = useState(true);
+  const [available] = useState(true);
 
   // Dynamic stats
   const currentYear = new Date().getFullYear();
@@ -48,11 +49,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="space-y-20 pb-20">
+    <div className="space-y-20">
       {/* Hero Section */}
       <section
         id="hero-section"
-        className="min-h-[500px] flex flex-col-reverse md:flex-row items-center justify-center gap-12 py-8 lg:px-8 max-w-5xl mx-auto"
+        className="min-h-[640px] flex flex-col-reverse md:flex-row items-center justify-center gap-12 py-6 max-w-6xl mx-auto"
       >
         <div className="flex-1 text-center md:text-left">
           <motion.h1
@@ -61,30 +62,19 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="bg-gradient-to-r from-blue-400 to-blue-800 bg-clip-text text-transparent">
-              Thu Rein Htet
-            </span>
+            <span className="md:text-6xl">Thu Rein Htet</span>
           </motion.h1>
-          <motion.div
-            className="text-lg sm:text-xl lg:text-2xl text-muted-foreground"
+
+          <motion.p
+            className="text-base sm:text-lg text-muted-foreground mt-4 max-w-2xl text-center md:text-left"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
-            <TypeAnimation
-              sequence={[
-                "Web Developer",
-                1500,
-                "Frontend Developer",
-                1500,
-                "Backend Developer",
-                1500,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </motion.div>
+            Crafting scalable web applications with React, Next.js, and
+            TypeScript. Transforming complex business requirements into elegant
+            digital solutions.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -96,10 +86,12 @@ export default function Home() {
               <MapPin className="h-4 w-4" />
               Myanmar
             </span>
-            <span className="flex items-center gap-1">
-              <Circle className="h-2 w-2 fill-green-500 text-green-500" />
-              Available for work
-            </span>
+            {available && (
+              <span className="flex items-center gap-1">
+                <Circle className="h-2 w-2 fill-green-500 text-green-500" />
+                Available for work
+              </span>
+            )}
           </motion.div>
 
           <motion.div
@@ -139,39 +131,62 @@ export default function Home() {
           animate={{
             opacity: 1,
             scale: 1,
-            y: [0, -10, 0],
           }}
           transition={{
             opacity: { duration: 0.2 },
             scale: { duration: 0.2 },
-            y: { duration: 4, ease: "easeInOut", repeat: Infinity },
           }}
         >
           <motion.div
-            className="relative w-full h-full rounded-full overflow-hidden shadow-2xl dark:border-gray-800"
+            className="absolute inset-0 rounded-full overflow-hidden"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, hsl(var(--primary) / 0.05) 100%)",
+            }}
+          >
+            {[...Array(12)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-0.5 bg-primary/60"
+                style={{
+                  left: `${i * 8 + 10}%`,
+                  height: "100%",
+                }}
+                animate={{
+                  opacity: [0, 1, 0],
+                  scaleY: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="absolute inset-4 rounded-full overflow-hidden shadow-2xl border border-primary/30"
+            whileHover={{ scale: 1.08 }}
             animate={{
-              borderRadius: [
-                "60% 40% 30% 70%/60% 30% 70% 40%",
-                "30% 60% 70% 40%/50% 60% 30% 60%",
-                "60% 40% 30% 70%/60% 30% 70% 40%",
-              ],
               boxShadow: [
-                "0 25px 50px -12px rgba(96, 165, 250, 0.4)",
-                "0 25px 50px -12px rgba(96, 165, 250, 0.6)",
-                "0 25px 50px -12px rgba(96, 165, 250, 0.4)",
+                "0 0 20px hsl(var(--primary) / 0.3)",
+                "0 0 40px hsl(var(--primary) / 0.6)",
+                "0 0 20px hsl(var(--primary) / 0.3)",
               ],
             }}
             transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
+              boxShadow: { duration: 3, repeat: Infinity },
+              hover: { duration: 0.3 },
             }}
           >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent z-10" />
             <Image
               src={profile}
               alt="Thu Rein Htet"
               fill
-              className="object-cover"
+              className="object-cover filter brightness-110 contrast-110"
               priority
               sizes="(max-width: 620px) 180px, (max-width: 748px) 240px, 280px"
             />
@@ -186,7 +201,7 @@ export default function Home() {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="relative"
             >
-              <ArrowDown className="h-5 w-5" />
+              <ArrowDown className="h-6 w-6" />
             </motion.div>
           </motion.button>
         )}
@@ -195,7 +210,7 @@ export default function Home() {
       {/* About Section */}
       <section
         id="about-section"
-        className="min-h-[500px] flex flex-col md:flex-row items-center justify-center gap-12 py-8 max-w-5xl mx-auto"
+        className="min-h-[540px] flex flex-col md:flex-row items-center justify-center gap-12 py-8 max-w-6xl mx-auto"
       >
         <motion.div
           className="flex-1 space-y-6"
@@ -209,9 +224,8 @@ export default function Home() {
 
           <div className="space-y-4 text-right">
             <p className="text-base text-muted-foreground leading-relaxed text-left">
-              I&apos;m a passionate web developer with experience spanning
-              front-end frameworks like React and Next.js to back-end
-              technologies including Node.js and database management.
+              I&apos;m a passionate web developer spanning front-end frameworks
+              like React and Next.js to back-end technologies including Node.js.
             </p>
 
             <Button variant="ghost" asChild className="px-0 w-fit ">
@@ -226,7 +240,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 gap-4 pt-4">
             <div className="text-center p-4 rounded-lg">
-              <div className="text-2xl font-bold text-green-400">
+              <div className="text-3xl font-bold text-green-400">
                 {yearsExperience}+
               </div>
               <div className="text-sm text-muted-foreground">
@@ -234,7 +248,7 @@ export default function Home() {
               </div>
             </div>
             <div className="text-center p-4 rounded-lg">
-              <div className="text-2xl font-bold text-primary">
+              <div className="text-3xl font-bold text-primary">
                 {projectsCompleted}+
               </div>
               <div className="text-sm text-muted-foreground">
@@ -267,7 +281,7 @@ export default function Home() {
       {/* Featured Projects Section */}
       <section
         id="featured-section"
-        className="min-h-[500px] space-y-6 sm:space-y-8 mx-auto pb-8"
+        className="min-h-[540px] mx-auto"
       >
         <motion.div
           className="flex flex-col sm:flex-row justify-between items-center gap-4"
@@ -296,7 +310,7 @@ export default function Home() {
               className="mb-4"
             >
               <Card className="group hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden">
-                <div className="relative aspect-video w-full overflow-hidden">
+                <div className="relative aspect-video w-full bg-accent overflow-hidden">
                   <Image
                     src={project.image}
                     alt={`${project.title}`}
@@ -380,20 +394,17 @@ export default function Home() {
                         )}
                       </Button>
                     </div>
-                    <Button
-                      size="sm"
-                      className="w-full sm:w-auto text-primary hover:text-blue-800 dark:hover:text-blue-200"
-                      variant="ghost"
-                    >
-                      <Link
-                        href={project.liveDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2"
+                    <ProjectDetailModal project={project}>
+                      <Button
+                        size="sm"
+                        className="w-full sm:w-auto text-primary hover:text-blue-800 dark:hover:text-blue-200"
+                        variant="ghost"
                       >
-                        View Details <MoveRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
+                        <span className="flex items-center justify-center gap-2">
+                          View Details <MoveRight className="h-4 w-4" />
+                        </span>
+                      </Button>
+                    </ProjectDetailModal>
                   </div>
                 </div>
               </Card>

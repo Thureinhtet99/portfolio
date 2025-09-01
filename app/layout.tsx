@@ -20,8 +20,64 @@ const robotoMono = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Thu Rein Htet",
-  description: "Thu Rein Htet's Portfolio",
+  title: {
+    default: "Thu Rein Htet - A Developer form Myanmar",
+    template: "%s | Thu Rein Htet Portfolio",
+  },
+  description:
+    "Full-Stack Next.js Developer specializing in React, TypeScript, and modern web applications. Building scalable solutions with clean code and exceptional user experiences.",
+  keywords: [
+    "Thu Rein Htet",
+    "Full-Stack Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Web Developer",
+    "Frontend",
+    "Backend",
+    "Myanmar Developer",
+  ],
+  authors: [{ name: "Thu Rein Htet" }],
+  creator: "Thu Rein Htet",
+  publisher: "Thu Rein Htet",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://thureinhtet.com"
+  ),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    title: "Thu Rein Htet - Full-Stack Next.js Developer",
+    description:
+      "Full-Stack Next.js Developer specializing in React, TypeScript, and modern web applications.",
+    siteName: "Thu Rein Htet Portfolio",
+    images: [
+      {
+        url: "/me.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Thu Rein Htet - Web Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thu Rein Htet - Full-Stack Next.js Developer",
+    description:
+      "Full-Stack Next.js Developer specializing in React, TypeScript, and modern web applications.",
+    images: ["/me.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -52,11 +108,9 @@ export default function RootLayout({
                     </div>
                   </div>
                 </header>
-                <main className="flex-1">
-                  <div className="container mx-auto p-4">
-                    {children}
-                    <Toaster />
-                  </div>
+                <main className="min-h-screen mx-auto px-4 md:px-6 lg:px-8">
+                  {children}
+                  <Toaster />
                 </main>
                 <Footer />
               </SidebarInset>
