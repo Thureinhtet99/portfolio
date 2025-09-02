@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "Full-Stack Next.js Developer specializing in React, TypeScript, and modern web applications. Building scalable solutions with clean code and exceptional user experiences.",
   keywords: [
     "Thu Rein Htet",
-    "Full-Stack Developer",
+    "Myanmar Web Developer",
     "Next.js",
     "React",
     "TypeScript",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    title: "Thu Rein Htet - Full-Stack Next.js Developer",
+    title: "Thu Rein Htet - Web Developer",
     description:
-      "Full-Stack Next.js Developer specializing in React, TypeScript, and modern web applications.",
+      "A web developer specializing in React, Next.js, TypeScript, and modern web applications.",
     siteName: "Thu Rein Htet Portfolio",
     images: [
       {
@@ -59,13 +59,6 @@ export const metadata: Metadata = {
         alt: "Thu Rein Htet - Web Developer",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Thu Rein Htet - Full-Stack Next.js Developer",
-    description:
-      "Full-Stack Next.js Developer specializing in React, TypeScript, and modern web applications.",
-    images: ["/me.jpg"],
   },
   robots: {
     index: true,

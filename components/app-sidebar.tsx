@@ -29,10 +29,6 @@ const data = {
       url: "/timelines",
     },
     {
-      title: "About",
-      url: "/about",
-    },
-    {
       title: "Projects",
       url: "/projects",
     },
@@ -40,7 +36,10 @@ const data = {
       title: "Certificates",
       url: "/certificates",
     },
-
+    {
+      title: "About",
+      url: "/about",
+    },
     {
       title: "Contact",
       url: "/contact",
@@ -120,9 +119,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </div>
             <div className="text-center">
               <h3 className="font-semibold text-sm">Thu Rein Htet</h3>
-              <p className="text-xs text-muted-foreground">
-                Web Developer
-              </p>
+              <p className="text-xs text-muted-foreground">Web Developer</p>
             </div>
           </div>
         </div>

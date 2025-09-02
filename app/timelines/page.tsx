@@ -233,7 +233,7 @@ export default function Timelines() {
   return (
     <>
       <motion.div
-        className="max-w-6xl mx-auto space-y-20 py-4"
+        className="max-w-6xl mx-auto space-y-20 py-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}

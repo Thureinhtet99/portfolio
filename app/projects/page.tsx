@@ -13,7 +13,12 @@ import { BiWorld } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { ProjectDetailModal } from "@/components/ProjectDetailModal";
 
-const categories = ["All", "Web Development", "Mobile Development", "FreeStyle"];
+const categories = [
+  "All",
+  "Web",
+  "Mobile",
+  "Free Style",
+];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -28,24 +33,27 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <>
       <motion.div
+        className="mx-auto space-y-20 py-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
       >
         {/* Current Projects */}
-        <div className="mb-12">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-            <h2 className="text-2xl font-bold">Current Projects</h2>
-            {/* Categories */}
-            <div className="w-full sm:w-auto overflow-x-auto">
-              <div className="flex gap-2 items-center min-w-max pb-2 sm:pb-0">
+        <div>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
+            <h2 className="text-4xl font-bold">Current Projects</h2>
+            {/* Categories - Mobile Optimized */}
+            <div className="w-full sm:w-auto">
+              <div className="flex gap-2 items-center overflow-x-auto scrollbar-hide pb-2 sm:pb-0 px-1 sm:px-0">
                 {categories.map((category) => (
                   <Badge
                     key={category}
-                    variant={activeCategory === category ? "default" : "outline"}
-                    className="cursor-pointer whitespace-nowrap py-1.5 px-3 text-sm transition-all flex-shrink-0"
+                    variant={
+                      activeCategory === category ? "default" : "outline"
+                    }
+                    className="cursor-pointer whitespace-nowrap py-1 px-2 text-sm transition-all flex-shrink-0 min-w-fit"
                     onClick={() => setActiveCategory(category)}
                   >
                     {category}
@@ -56,7 +64,7 @@ export default function ProjectsPage() {
           </div>
 
           {filteredCurrentProjects.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               {filteredCurrentProjects.map((project) => (
                 <Card
                   key={project.title}
@@ -71,8 +79,8 @@ export default function ProjectsPage() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <div className="px-6 pb-6 flex flex-col flex-1">
-                    <h3 className="font-bold text-xl line-clamp-1 mb-3">
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex flex-col flex-1">
+                    <h3 className="font-bold text-lg sm:text-xl line-clamp-1 mb-3">
                       {project.title}
                     </h3>
                     <p className="text-muted-foreground flex-1 text-sm sm:text-base line-clamp-2 leading-relaxed">
@@ -83,20 +91,21 @@ export default function ProjectsPage() {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="text-xs px-3 py-1"
+                          className="text-xs px-2 sm:px-3 py-1"
                         >
                           {tech}
                         </Badge>
                       ))}
                     </div>
-                    <div className="flex gap-3 mt-5 flex-wrap justify-between items-center sm:flex-nowrap">
-                      <div className="flex justify-between items-center">
+                    {/* Mobile: Stack buttons vertically with better spacing */}
+                    <div className="flex flex-col gap-3 mt-5">
+                      <div className="flex gap-2 w-full">
                         <Button
                           variant="ghost"
                           size="sm"
                           disabled={!project.isGitHub}
                           asChild={project.isGitHub}
-                          className="w-full sm:w-auto hover:text-primary hover:bg-transparent"
+                          className="flex-1 hover:text-primary hover:bg-transparent h-10"
                         >
                           {project.isGitHub ? (
                             <Link
@@ -119,7 +128,7 @@ export default function ProjectsPage() {
                           size="sm"
                           disabled={!project.isLiveDemo}
                           asChild={project.isLiveDemo}
-                          className="w-full sm:w-auto hover:text-primary hover:bg-transparent"
+                          className="flex-1 hover:text-primary hover:bg-transparent h-10"
                           variant="ghost"
                         >
                           {project.isLiveDemo ? (
@@ -143,7 +152,7 @@ export default function ProjectsPage() {
                       <ProjectDetailModal project={project}>
                         <Button
                           size="sm"
-                          className="w-full sm:w-auto text-primary hover:text-blue-800 dark:hover:text-blue-200"
+                          className="w-full text-primary hover:text-blue-800 dark:hover:text-blue-200 h-10"
                           variant="ghost"
                         >
                           <span className="flex items-center justify-center gap-2">
@@ -171,13 +180,14 @@ export default function ProjectsPage() {
             </div>
           )}
         </div>
+
         {/* Upcoming Projects */}
         <div>
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
             <Clock className="h-6 w-6" /> Upcoming Projects
           </h2>
           {upcomingProjects.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               {upcomingProjects.map((project) => (
                 <Card
                   key={project.title}
@@ -199,8 +209,8 @@ export default function ProjectsPage() {
                       <Badge variant="secondary">Coming Soon</Badge>
                     </div>
                   </div>
-                  <div className="px-6 pb-6 flex flex-col flex-1">
-                    <h3 className="font-bold text-xl line-clamp-1 mb-3">
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6 flex flex-col flex-1">
+                    <h3 className="font-bold text-lg sm:text-xl line-clamp-1 mb-3">
                       {project.title}
                     </h3>
                     <p className="text-muted-foreground flex-1 text-sm sm:text-base line-clamp-3 leading-relaxed">
@@ -211,13 +221,16 @@ export default function ProjectsPage() {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="text-xs px-3 py-1"
+                          className="text-xs px-2 sm:px-3 py-1"
                         >
                           {tech}
                         </Badge>
                       ))}
                       {project.techStacks.length > 2 && (
-                        <Badge variant="outline" className="text-xs px-3 py-1">
+                        <Badge
+                          variant="outline"
+                          className="text-xs px-2 sm:px-3 py-1"
+                        >
                           + more
                         </Badge>
                       )}
@@ -230,13 +243,13 @@ export default function ProjectsPage() {
                         </span>
                       </div>
                     )}
-                    <div className="flex gap-3 mt-5 flex-wrap justify-between items-center sm:flex-nowrap">
-                      <div className="flex justify-between items-center">
+                    <div className="flex flex-col gap-3 mt-5">
+                      <div className="flex gap-2 w-full">
                         <Button
                           variant="ghost"
                           size="sm"
                           disabled
-                          className="w-full sm:w-auto hover:text-primary hover:bg-transparent"
+                          className="flex-1 hover:text-primary hover:bg-transparent h-10"
                         >
                           <span className="flex items-center justify-center gap-1">
                             <FaGithub className="h-4 w-4" />
@@ -246,7 +259,7 @@ export default function ProjectsPage() {
                         <Button
                           size="sm"
                           disabled
-                          className="w-full sm:w-auto hover:text-primary hover:bg-transparent"
+                          className="flex-1 hover:text-primary hover:bg-transparent h-10"
                           variant="ghost"
                         >
                           <span className="flex items-center justify-center gap-1">
@@ -258,7 +271,7 @@ export default function ProjectsPage() {
                       <Button
                         size="sm"
                         disabled
-                        className="w-full sm:w-auto"
+                        className="w-full h-10"
                         variant="ghost"
                       >
                         <span className="flex items-center justify-center gap-2">
@@ -286,6 +299,6 @@ export default function ProjectsPage() {
           )}
         </div>
       </motion.div>
-    </div>
+    </>
   );
 }

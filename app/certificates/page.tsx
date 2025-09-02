@@ -9,26 +9,23 @@ import { motion } from "framer-motion";
 
 export default function CertificatesPage() {
   return (
-    <div className="min-h-screen">
+    <>
       <motion.div
-        className="container mx-auto px-4 sm:px-6 lg:px-8"
+        className="mx-auto space-y-20 py-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
       >
         {/* Professional Header Section */}
-        <div className="pt-12 pb-16 text-center">
-          <div className="space-y-2">
+          <div className="space-y-2 text-center">
             <h1 className="text-4xl font-bold bg-clip-text">Certificates</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              A collection of professional certifications and achievements
-              demonstrating expertise across various technologies.
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              A collection of certifications and achievements
+              showing expertise across various technologies.
             </p>
-          </div>
         </div>
 
         {/* Certificates Grid */}
-        <div className="pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {certificates.map((certificate) => (
               <div
@@ -88,7 +85,11 @@ export default function CertificatesPage() {
                     {certificate.skills && certificate.skills.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mb-3">
                         {certificate.skills.map((skill) => (
-                          <Badge key={skill} variant="outline" className="text-xs px-2 py-1">
+                          <Badge
+                            key={skill}
+                            variant="outline"
+                            className="text-xs px-2 py-1"
+                          >
                             {skill}
                           </Badge>
                         ))}
@@ -103,7 +104,9 @@ export default function CertificatesPage() {
 
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 lg:gap-4 pt-3 lg:pt-4 border-t border-slate-200 dark:border-slate-700">
                     <div className="flex items-center text-muted-foreground">
-                      <span className="text-xs lg:text-sm font-medium">Issued by</span>
+                      <span className="text-xs lg:text-sm font-medium">
+                        Issued by
+                      </span>
                       <span className="mx-1.5 lg:mx-2">•</span>
                       <span className="text-xs lg:text-sm font-semibold text-primary truncate">
                         {certificate.issuer}
@@ -129,8 +132,7 @@ export default function CertificatesPage() {
               </div>
             ))}
           </div>
-        </div>
       </motion.div>
-    </div>
+    </>
   );
 }

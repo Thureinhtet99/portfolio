@@ -23,15 +23,18 @@ export default function About() {
   return (
     <>
       <motion.div
-        className="max-w-6xl mx-auto space-y-20 py-4 border"
+        className="max-w-6xl mx-auto space-y-20 py-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
       >
         {/* Header */}
-        <h1 className="text-4xl text-center font-bold bg-clip-text">
-          About Me
-        </h1>
+        <div className="space-y-2 text-center">
+            <h1 className="text-4xl font-bold bg-clip-text">About me</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Turning ideas into responsive, functional, and impactful digital products.
+            </p>
+        </div>
 
         {/* Introduction Card */}
         <Card>

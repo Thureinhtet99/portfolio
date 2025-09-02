@@ -59,24 +59,22 @@ export default function Contact() {
   };
 
   return (
-    <div className="container px-4 sm:px-6 max-w-2xl mx-auto py-8 sm:py-10 lg:py-12">
+    <div className="max-w-2xl mx-auto py-4">
       <motion.div
-        className="space-y-6"
+        className="space-y-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
       >
         <div className="space-y-2 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-            Get in Touch
-          </h1>
-          <p className="text-muted-foreground text-sm sm:text-base mx-auto max-w-md">
-            Have a question or want to work together? Send me a message and
-            I&apos;ll get back to you as soon as possible.
+          <h1 className="text-4xl font-bold bg-clip-text">Contact</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Have a question or want to work together? Send me a message and I&apos;ll
+            get back to you as soon as possible.
           </p>
         </div>
 
-        <div className="bg-card border rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
+        <div className="bg-card rounded-lg shadow-sm p-2 sm:p-4 md:p-6">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -163,7 +161,7 @@ export default function Contact() {
                     <FormControl>
                       <Textarea
                         placeholder="Your message here..."
-                        className="min-h-[120px] sm:min-h-[150px] resize-y"
+                        className="min-h-[80px] sm:min-h-[100px] resize-y"
                         {...field}
                       />
                     </FormControl>

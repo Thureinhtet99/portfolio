@@ -24,8 +24,10 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-background">
-      <div className="container mx-auto p-4">
-        <div className="flex flex-col items-center space-y-4">
+      <div
+        className="mx-auto p-4"
+      >
+        <div className="flex flex-col items-center space-y-2">
           {/* Social Links */}
           <div className="flex items-center space-x-6">
             {socailLinks.map((link) => (
