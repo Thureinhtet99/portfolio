@@ -1,9 +1,12 @@
-import { Separator } from "@/components/ui/separator";
+"use client"
+
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const isMobile = useIsMobile();
   const socailLinks = [
     {
       title: "Github",
@@ -23,37 +26,61 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t bg-background">
-      <div
-        className="mx-auto p-4"
-      >
-        <div className="flex flex-col items-center space-y-2">
-          {/* Social Links */}
-          <div className="flex items-center space-x-6">
-            {socailLinks.map((link) => (
-              <Link
-                key={link.title}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-                aria-label="GitHub"
-              >
-                {link.icon}
-                {/* <FaGithub className="w-5 h-5" /> */}
-              </Link>
-            ))}
-          </div>
+    <footer className="border-t mt-8 bg-background">
+      <div className="mx-auto p-4">
+        {isMobile ? (
+          // Mobile layout - stacked vertically
+          <div className="flex flex-col items-center space-y-4">
+            {/* Social Links */}
+            <div className="flex items-center justify-center space-x-6">
+              {socailLinks.map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  aria-label={link.title}
+                >
+                  {link.icon}
+                </Link>
+              ))}
+            </div>
 
-          <Separator className="max-w-xs" />
-
-          {/* Copyright */}
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              © {currentYear} Thu Rein Htet. All rights reserved.
-            </p>
+            {/* Copyright */}
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">
+                © {currentYear} Thu Rein Htet. All rights reserved.
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          // Desktop layout - horizontal
+          <div className="flex justify-between items-center">
+            {/* Social Links */}
+            <div className="flex items-center space-x-6">
+              {socailLinks.map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  aria-label={link.title}
+                >
+                  {link.icon}
+                </Link>
+              ))}
+            </div>
+
+            {/* Copyright */}
+            <div className="text-end">
+              <p className="text-sm text-muted-foreground">
+                © {currentYear} Thu Rein Htet. All rights reserved.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </footer>
   );

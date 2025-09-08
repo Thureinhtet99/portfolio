@@ -244,7 +244,7 @@ export default function Home() {
                 {yearsExperience}+
               </div>
               <div className="text-sm text-muted-foreground">
-                Years Experience
+                years hands-on experiences
               </div>
             </div>
             <div className="text-center p-4 rounded-lg">
@@ -252,7 +252,7 @@ export default function Home() {
                 {projectsCompleted}+
               </div>
               <div className="text-sm text-muted-foreground">
-                Projects Completed
+                projects completed
               </div>
             </div>
           </div>
