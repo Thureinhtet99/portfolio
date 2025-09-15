@@ -47,14 +47,10 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "Facebook",
-      url: "https://www.facebook.com/profile.php?id=100056964217962",
-      icon: <FaFacebook className="h-4 w-4" />,
-    },
-    {
-      title: "LinkedIn",
-      url: "https://www.linkedin.com/in/thureinhtet99/",
-      icon: <FaLinkedin className="h-4 w-4" />,
+      title: "Download CV",
+      url: resumePath,
+      icon: <HardDriveDownload className="h-4 w-4" />,
+      download: true,
     },
     {
       title: "Github",
@@ -62,16 +58,19 @@ const data = {
       icon: <FaGithub className="h-4 w-4" />,
     },
     {
+      title: "LinkedIn",
+      url: "https://www.linkedin.com/in/thureinhtet99/",
+      icon: <FaLinkedin className="h-4 w-4" />,
+    },
+    {
       title: "Email",
       url: "https://mail.google.com/mail/?view=cm&fs=1&to=thureinhtet653@gmail.com",
       icon: <IoIosMail className="h-4 w-4" />,
     },
-
     {
-      title: "Download CV",
-      url: resumePath,
-      icon: <HardDriveDownload className="h-4 w-4" />,
-      download: true,
+      title: "Facebook",
+      url: "https://www.facebook.com/profile.php?id=100056964217962",
+      icon: <FaFacebook className="h-4 w-4" />,
     },
   ],
 };
@@ -132,7 +131,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton
                   asChild
-                  className={`w-full px-4 py-3 group relative overflow-hidden transition-all duration-300 rounded-lg ${
+                  className={`w-full px-4 py-2.5 group relative overflow-hidden transition-all duration-300 rounded-lg ${
                     pathname === item.url
                       ? "bg-primary/10 text-primary font-semibold"
                       : "hover:bg-muted/50 hover:text-foreground"
@@ -174,7 +173,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton
                   asChild
-                  className="w-full px-3 py-2.5 hover:bg-muted/50 hover:text-primary transition-all duration-300 rounded-lg group"
+                  className="w-full px-3 py-1 hover:bg-muted/50 hover:text-primary transition-all duration-300 rounded-lg group"
                 >
                   <Link
                     href={item.url}
